@@ -1,0 +1,21 @@
+BveTs Instrument Panel 2.01
+
+[This]
+Resolution = 4096
+Left = 0
+Top = 0
+Right = 4096
+Bottom = 4096
+DaytimeImage = Bg.png
+Center = 2048, 2048
+Origin = 2048, 2048
+
+[PilotLamp]
+Subject = true
+Location = 128, 1024
+DaytimeImage = Rainbow.tex.png
+
+[PilotLamp]
+Subject = ats255
+Location = 128, 1280
+DaytimeImage = Ats.png

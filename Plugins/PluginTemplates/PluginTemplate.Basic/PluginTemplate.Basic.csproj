@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{104224C1-0D38-4FCD-A50E-9BF6F5111CD6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>YourHN.YourPluginName</RootNamespace>
+    <AssemblyName>YourPluginName</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CSharpPluginHost, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Libraries\CSharpPluginHost.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AtsMain.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy /y "$(TargetPath)" "$(SolutionDir)Plugins\_DummyTrain\Ats\Ats64\"
+copy /y "$(TargetPath)" "$(SolutionDir)Plugins\_DummyTrain\Ats\Ats32\"
+copy /y "$(SolutionDir)Plugins\Libraries\x64\(ATSプラグイン名).wrapper.dll" "$(SolutionDir)Plugins\_DummyTrain\Ats\Ats64\$(TargetName).wrapper.dll"
+copy /y "$(SolutionDir)Plugins\Libraries\x86\(ATSプラグイン名).wrapper.dll" "$(SolutionDir)Plugins\_DummyTrain\Ats\Ats32\$(TargetName).wrapper.dll"
+copy /y "$(SolutionDir)Plugins\Libraries\CSharpPluginHost.dll" "$(SolutionDir)Plugins\_DummyTrain\Ats\Ats64\CSharpPluginHost.dll"
+copy /y "$(SolutionDir)Plugins\Libraries\CSharpPluginHost.dll" "$(SolutionDir)Plugins\_DummyTrain\Ats\Ats32\CSharpPluginHost.dll"</PostBuildEvent>
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,8 @@
+BveTs Vehicle Sound 3.00
+
+[Run]
+0 = Sound\Null.wav
+
+[Ats]
+0 = Sound\Ats.wav
+1 = Sound\AtsCnt.wav
