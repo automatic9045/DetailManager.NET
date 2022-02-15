@@ -51,7 +51,9 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy /y "$(TargetPath)" "$(SolutionDir)Plugins\_DummyTrain\Ats\Ats64\"
+copy /y "$(TargetDir)$(TargetName).pdb" "$(SolutionDir)Plugins\_DummyTrain\Ats\Ats64\"
 copy /y "$(TargetPath)" "$(SolutionDir)Plugins\_DummyTrain\Ats\Ats32\"
+copy /y "$(TargetDir)$(TargetName).pdb" "$(SolutionDir)Plugins\_DummyTrain\Ats\Ats32\"
 copy /y "$(SolutionDir)Plugins\Libraries\x64\(ATSプラグイン名).wrapper.dll" "$(SolutionDir)Plugins\_DummyTrain\Ats\Ats64\$(TargetName).wrapper.dll"
 copy /y "$(SolutionDir)Plugins\Libraries\x86\(ATSプラグイン名).wrapper.dll" "$(SolutionDir)Plugins\_DummyTrain\Ats\Ats32\$(TargetName).wrapper.dll"
 copy /y "$(SolutionDir)Plugins\Libraries\CSharpPluginHost.dll" "$(SolutionDir)Plugins\_DummyTrain\Ats\Ats64\CSharpPluginHost.dll"
