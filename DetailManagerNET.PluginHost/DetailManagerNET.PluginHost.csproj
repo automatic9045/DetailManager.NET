@@ -7,7 +7,7 @@
     <ProjectGuid>{C715BD88-F9A3-4204-B82E-15BA4C285FB8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Automatic9045.CSharpAtsPluginWrapper.PluginHost</RootNamespace>
+    <RootNamespace>Automatic9045.DetailManagerNET.PluginHost</RootNamespace>
     <AssemblyName>CSharpPluginHost</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

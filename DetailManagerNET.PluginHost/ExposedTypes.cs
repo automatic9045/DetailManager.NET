@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace Automatic9045.CSharpAtsPluginWrapper.PluginHost
+namespace Automatic9045.DetailManagerNET.PluginHost
 {
     /// <summary>
     /// ATS Keys

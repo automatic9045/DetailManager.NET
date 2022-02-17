@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Automatic9045.CSharpAtsPluginWrapper.PluginHost
+namespace Automatic9045.DetailManagerNET.PluginHost
 {
     /// <summary>
     /// Unmanaged array operations for Panel / Sound.

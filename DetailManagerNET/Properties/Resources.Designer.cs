@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Automatic9045.CSharpAtsPluginWrapper.Properties {
+namespace Automatic9045.DetailManagerNET.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Automatic9045.CSharpAtsPluginWrapper.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Automatic9045.CSharpAtsPluginWrapper.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Automatic9045.DetailManagerNET.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-using Automatic9045.CSharpAtsPluginWrapper.PluginHost;
+using Automatic9045.DetailManagerNET.PluginHost;
 
 namespace Automatic9045.SampleCSharpAtsPlugins.SimpleAts
 {

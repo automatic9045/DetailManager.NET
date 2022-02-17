@@ -7,7 +7,7 @@
     <ProjectGuid>{628AF376-6346-4C2C-BE0B-2A9A2D51DEC9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Automatic9045.CSharpAtsPluginWrapper</RootNamespace>
+    <RootNamespace>Automatic9045.DetailManagerNET</RootNamespace>
     <AssemblyName>%28ATSプラグイン名%29.wrapper</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -85,7 +85,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CSharpAtsPluginWrapper.PluginHost\CSharpAtsPluginWrapper.PluginHost.csproj">
+    <ProjectReference Include="..\DetailManagerNET.PluginHost\DetailManagerNET.PluginHost.csproj">
       <Project>{c715bd88-f9a3-4204-b82e-15ba4c285fb8}</Project>
       <Name>CSharpAtsPluginWrapper.PluginHost</Name>
     </ProjectReference>
@@ -100,7 +100,7 @@
   <PropertyGroup>
     <DllExportIdent>F95804BF-9221-48D5-A4AE-60EC17757C03</DllExportIdent>
     <DllExportMetaLibName>DllExport.dll</DllExportMetaLibName>
-    <DllExportNamespace>Automatic9045.CSharpAtsPluginWrapper</DllExportNamespace>
+    <DllExportNamespace>Automatic9045.DetailManagerNET</DllExportNamespace>
     <DllExportDDNSCecil>true</DllExportDDNSCecil>
     <DllExportSkipOnAnyCpu>false</DllExportSkipOnAnyCpu>
     <DllExportPlatform>Auto</DllExportPlatform>

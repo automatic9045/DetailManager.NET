@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Automatic9045.CSharpAtsPluginWrapper.PluginHost
+namespace Automatic9045.DetailManagerNET.PluginHost
 {
     public interface IAtsPlugin : IDisposable
     {

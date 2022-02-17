@@ -5,9 +5,9 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-using Automatic9045.CSharpAtsPluginWrapper.PluginHost;
+using Automatic9045.DetailManagerNET.PluginHost;
 
-namespace Automatic9045.CSharpAtsPluginWrapper
+namespace Automatic9045.DetailManagerNET
 {
     /// <summary>
     /// Basics of ATS plug-in.
@@ -49,7 +49,7 @@ namespace Automatic9045.CSharpAtsPluginWrapper
         public static void Load()
         {
 #if DEBUG
-            MessageBox.Show($"CSharpAtsPluginWrapper\nCopyright © 2022 Automatic9045\n\nデバッグモードで読み込まれました。");
+            MessageBox.Show($"DetailManager.NET\nCopyright © 2022 Automatic9045\n\nデバッグモードで読み込まれました。");
 #endif
             TargetPlugin = PluginLoader.Load();
         }

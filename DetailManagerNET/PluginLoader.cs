@@ -5,10 +5,10 @@ using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
 
-using Automatic9045.CSharpAtsPluginWrapper.Properties;
-using Automatic9045.CSharpAtsPluginWrapper.PluginHost;
+using Automatic9045.DetailManagerNET.Properties;
+using Automatic9045.DetailManagerNET.PluginHost;
 
-namespace Automatic9045.CSharpAtsPluginWrapper
+namespace Automatic9045.DetailManagerNET
 {
     internal static class PluginLoader
     {

@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpAtsPluginWrapper.PluginHost", "CSharpAtsPluginWrapper.PluginHost\CSharpAtsPluginWrapper.PluginHost.csproj", "{C715BD88-F9A3-4204-B82E-15BA4C285FB8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DetailManagerNET", "DetailManagerNET\DetailManagerNET.csproj", "{628AF376-6346-4C2C-BE0B-2A9A2D51DEC9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DetailManagerNET.PluginHost", "DetailManagerNET.PluginHost\DetailManagerNET.PluginHost.csproj", "{C715BD88-F9A3-4204-B82E-15BA4C285FB8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SamplePlugins", "SamplePlugins", "{2FBD9373-5C90-4A94-9540-6FE5CD8CBFD6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugins", "Plugins", "{8D837E49-FE0E-44EC-94F0-A75279059E57}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpAtsPluginWrapper", "CSharpAtsPluginWrapper\CSharpAtsPluginWrapper.csproj", "{628AF376-6346-4C2C-BE0B-2A9A2D51DEC9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SamplePlugin.Alert", "Plugins\SamplePlugins\SamplePlugin.Alert\SamplePlugin.Alert.csproj", "{3FF38936-E674-4C5E-A712-BB18561BBBA6}"
 EndProject
