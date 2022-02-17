@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 
 using Automatic9045.CSharpAtsPluginWrapper.PluginHost;
 
@@ -17,6 +18,13 @@ namespace Automatic9045.SampleCSharpAtsPlugins.SimpleAts
         private bool IsFirstTime = true;
         private bool IsAutoBraking = false;
         private bool IsButtonSPressing = false;
+
+        static AtsMain()
+        {
+#if DEBUG
+            MessageBox.Show($"{typeof(AtsMain).Namespace}\n\nデバッグモードで読み込まれました。");
+#endif
+        }
 
         public AtsMain()
         {

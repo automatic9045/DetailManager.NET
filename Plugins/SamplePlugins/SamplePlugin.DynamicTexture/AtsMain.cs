@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 
 using Zbx1425.DXDynamicTexture;
 
@@ -17,6 +18,9 @@ namespace Automatic9045.SampleCSharpAtsPlugins.DynamicTexture
 
         static AtsMain()
         {
+#if DEBUG
+            MessageBox.Show($"{typeof(AtsMain).Namespace}\n\nデバッグモードで読み込まれました。");
+#endif
             AppDomain.CurrentDomain.AssemblyResolve += AssemblyResolver.Resolve;
         }
 

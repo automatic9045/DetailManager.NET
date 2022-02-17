@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 
 using Zbx1425.DXDynamicTexture;
 
@@ -16,6 +17,9 @@ namespace YourHN.YourPluginName
     {
         static AtsMain() // 静的コンストラクタ。一部のこの中で実行する必要がある処理を除き、基本的にはコンストラクタを使用してください。
         {
+#if DEBUG
+            MessageBox.Show($"{typeof(AtsMain).Namespace}\n\nデバッグモードで読み込まれました。");
+#endif
             AppDomain.CurrentDomain.AssemblyResolve += AssemblyResolver.Resolve; // DXDynamicTexture、HarmonyのDLLがある場所を登録し、読み込めるようにします。
         }
 

@@ -16,6 +16,13 @@ namespace Automatic9045.SampleCSharpAtsPlugins.Alert
         private DateTime StartDateTime = new DateTime(3000, 1, 1);
         private bool HasAlerted = false;
 
+        static AtsMain()
+        {
+#if DEBUG
+            MessageBox.Show($"{typeof(AtsMain).Namespace}\n\nデバッグモードで読み込まれました。");
+#endif
+        }
+
         public AtsMain()
         {
         }

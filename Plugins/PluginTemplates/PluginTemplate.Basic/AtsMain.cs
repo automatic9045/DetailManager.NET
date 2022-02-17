@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 
 using Automatic9045.CSharpAtsPluginWrapper.PluginHost;
 
@@ -12,6 +13,13 @@ namespace YourHN.YourPluginName
 {
     public class AtsMain : IAtsPlugin
     {
+        static AtsMain() // 静的コンストラクタ。一部のこの中で実行する必要がある処理を除き、基本的にはコンストラクタを使用してください。
+        {
+#if DEBUG
+            MessageBox.Show($"{typeof(AtsMain).Namespace}\n\nデバッグモードで読み込まれました。");
+#endif
+        }
+
         public AtsMain() // コンストラクタ。Load()に相当します。
         {
         }
