@@ -1,17 +1,37 @@
 # DetailManager.NET
-【BVE5・6】C#でATSプラグインを簡単に開発できるようにするラッパーです。
+【BVE5・6】C#などの.NET系言語で開発したATSプラグインをDllExport無しでBVEから読み込めるようにするプラグインです。
 
 ## 具体的な機能
-DllExportなど、アンマネージドコードと連携するための処理を肩代わりします。  
-BVEからこのラッパーライブラリ（以下ラッパーDLL）を通じてユーザーが開発したライブラリ（以下ターゲットDLL）を読み込むことで、ユーザーはアンマネージドコードの存在を意識せずに開発できるようになります。
+基本的な使い方はRock_On氏が開発された[DetailManager](https://github.com/mikangogo/DetailManager)と同様で、DetailModulesNET.txtに列挙されたATSプラグインを読み込みます。  
+ただし、DetailManager.NETが読み込み可能なのは、DetailManager.NET独自の仕様に沿って実装されたATSプラグインのみです。そのため、 **従来のATSプラグインと共存させるには「DetailManagerからDetailManager.NETを読み込む」必要があります。**
 
+```mermaid
+graph TB
+	BVE["BVE本体"]
+	DM{{"DetailManager（Rock_On氏作成）"}}
+	DMNET{{"DetailManager.NET"}}
+	subgraph "従来のプラグイン（例）"
+		NativePI1["ats-p.dll"]
+		NativePI2["eb.dll"]
+		NativePI3["motor.dll"]
+	end
+	subgraph "DetailManager.NET対応プラグイン（例）"
+		NetPI1["tasc.dll"]
+		NetPI2["monitor.dll"]
+		NetPI3["timetable.dll"]
+	end
+	
+	BVE ==> DM
+	DM --> NativePI1
+	DM --> NativePI2
+	DM --> NativePI3
+	DM ==> DMNET
+	DMNET --> NetPI1
+	DMNET --> NetPI2
+	DMNET --> NetPI3
 ```
-BVE本体
-　↓
-YourAtsPlugin.wrapper.dll（ラッパーDLL＝このライブラリ）
-　↓
-YourAtsPlugin.dll（ターゲットDLL）
-```
+
+
 
 一方、関数については従来のATSプラグインの仕様とほとんど変えていません。  
 これは、学習コストをできる限り下げ、従来のATSプラグインのコードを容易に移植できるようにするためです。
@@ -31,71 +51,71 @@ YourAtsPlugin.dll（ターゲットDLL）
 
 ```
 ├ _DummyTrain
-|
+│
 ├ Libraries
-| ├ x64
-| | └ (ATSプラグイン名).wrapper.dll
-| |
-| ├ x86
-| | └ (ATSプラグイン名).wrapper.dll
-| |
-| └ CSharpPluginHost.dll
-|
+│ ├ x64
+│ │ └ DetailManagerNET.dll
+│ │
+│ ├ x86
+│ │ └ DetailManagerNET.dll
+│ │
+│ └ DetailManagerNET.PluginHost.dll
+│
 ├ PluginTemplates
-| ├ Basic
-| └ DynamicTexture
-|
+│ ├ Basic
+│ └ DynamicTexture
+│
 ├ SamplePlugins
-| ├ Alert
-| ├ DynamicTexture
-| └ SimpleAts
-|
+│ ├ Alert
+│ ├ DynamicTexture
+│ └ SimpleAts
+│
 └ Readme.md
 ```
 
 #### リポジトリ
 
 ```
-├ CSharpAtsPluginWrapper
-├ CSharpAtsPluginWrapper.PluginHost
-|
+├ DetailManagerNET
+├ DetailManagerNET.PluginHost
+│
 ├ Plugins
-| ├ _DummyTrain
-| |
-| ├ Libraries
-| | ├ x64
-| | └ x86
-| |
-| ├ PluginTemplates
-| | ├ Basic
-| | └ DynamicTexture
-| |
-| └ SamplePlugins
-|   ├ Alert
-|   ├ DynamicTexture
-|   └ SimpleAts
-|
-├ CSharpAtsPluginWrapper.sln
+│ ├ _DummyTrain
+│ │
+│ ├ Libraries
+│ │ ├ x64
+│ │ └ x86
+│ │
+│ ├ PluginTemplates
+│ │ ├ Basic
+│ │ └ DynamicTexture
+│ │
+│ └ SamplePlugins
+│   ├ Alert
+│   ├ DynamicTexture
+│   └ SimpleAts
+│
+├ DetailManagerNET.sln
 └ Readme.md
 ```
 
 以下、ディレクトリ名はリポジトリに準拠します。リリースではディレクトリ名のはじめから`Plugins/`を抜いた形になります。
 
-### CSharpAtsPluginWrapper
+### DetailManagerNET
 
 ※リリースには含まれません
 
-メインのプロジェクトです。このプロジェクトのビルドがラッパーDLLとなります。  
-ビルド時に`Plugins/Libraries/(x64 or x86)/(ATSプラグイン名).wrapper.dll`へ自動配置します。
+メインのプロジェクトです。  
+ビルド時に`Plugins/Libraries/(x64 or x86)/DetailManagerNET.dll`へ自動配置します。
 
-### CSharpAtsPluginWrapper.PluginHost
+### DetailManagerNET.PluginHost
 
 ※リリースには含まれません
 
 プラグインに公開するクラス・構造体や、プラグインの基底となるインターフェースを提供するプロジェクトです。  
-ビルド時にPlugins/Libraries/CSharpPluginHost.dll`へ自動配置します。
+ビルド時に`Plugins/Libraries/DetailManagerNET.PluginHost.dll`へ自動配置します。
 
-**プラグイン開発時は、このプロジェクトではなく`Plugins/Libraries/CSharpPluginHost.dll`を参照に追加してください。**
+**プラグイン開発時は、このプロジェクトではなく`Plugins/Libraries/DetailManagerNET.PluginHost.dll`を参照に追加してください。**
 
 ### Plugins/_DummyTrain
 
@@ -116,11 +136,11 @@ YourAtsPlugin.dll（ターゲットDLL）
 
 #### リポジトリの場合
 
-CSharpAtsPluginWrapper、CSharpAtsPluginWrapper.PluginHostのビルドがこのフォルダ以下に自動で配置されます。  
+DetailManagerNET、DetailManagerNET.PluginHostのビルドがこのフォルダ以下に自動で配置されます。  
 出力先は以下の通りです。
 
-- CSharpAtsPluginWrapper - `Plugins/Libraries/(x64 or x86)/(ATSプラグイン名).wrapper.dll`
-- CSharpAtsPluginWrapper.PluginHost - `Plugins/Libraries/CSharpPluginHost.dll`
+- DetailManagerNET- `Plugins/Libraries/(x64 or x86)/DetailManagerNET.dll`
+- DetailManagerNET.PluginHost - `Plugins/Libraries/DetailManagerNET.PluginHost.dll`
 
 **※初期状態では配置されていません。一度リビルドしてください。**
 
@@ -130,8 +150,8 @@ CSharpAtsPluginWrapper、CSharpAtsPluginWrapper.PluginHostのビルドがこの�
 
 #### コンテンツ一覧
 
-- `(x64 or x86)/(ATSプラグイン名).wrapper.dll` - ラッパーDLL。車両のターゲットDLLと同じフォルダにコピーした上で、`(ATSプラグイン名)`をターゲットDLLの名前に変更してください（例：ターゲットDLLが`Ats/AtsP.dll`→ラッパーDLLは`Ats/AtsP.wrapper.dll`）。
-- `Libraries/CSharpPluginHost.dll` - プラグインに公開するクラス・構造体や、プラグインの基底となるインターフェースを提供するDLL。車両のターゲットDLL、ラッパーDLLと同じフォルダにコピーしてください。また、プラグイン開発時はこのDLLを参照に追加してください。
+- `Libraries/(x64 or x86)/DetailManagerNET.dll` - DetailManager.NETのメインDLL。読み込みたいDLLと同じフォルダにコピーしてください。なお、プラグインからこのDLLを参照する必要はありません（循環参照になります）。
+- `Libraries/DetailManagerNET.PluginHost.dll` - プラグインに公開するクラス・構造体や、プラグインの基底となるインターフェースを提供するプラグインホストDLL。読み込みたいDLLと同じフォルダにコピーしてください。また、プラグイン開発時はこのDLLを参照に追加してください。
 
 #### 注意
 
@@ -151,7 +171,7 @@ CSharpAtsPluginWrapper、CSharpAtsPluginWrapper.PluginHostのビルドがこの�
 
 #### Plugins/PluginTemplates/DynamicTexture
 
-[DXDynamicTexture](https://github.com/zbx1425/DXDynamicTexture)を使用するプラグインのテンプレートです。Basicと同一のコードの他、DXDynamicTextureの動作に必要なコード、テクスチャを編集しやすくするためのクラスの定義（初期クラス名：`YourHN.YourPluginName.DynamicTexture`）が記述されています。また、ビルド時のターゲットプラットフォームの設定によってターゲットフレームワークが自動で変更されるようになっています。
+[DXDynamicTexture](https://github.com/zbx1425/DXDynamicTexture)を使用するプラグインのテンプレートです。Basicと同一のコードの他、DXDynamicTextureの動作に必要なコード、テクスチャを編集しやすくするためのクラス（初期クラス名：`YourHN.YourPluginName.DynamicTexture`）が定義されています。また、ビルド時のターゲットプラットフォームの設定によってターゲットフレームワークが自動で変更されるようになっています。
 
 ### Plugins/SamplePlugins
 
@@ -190,14 +210,14 @@ CSharpAtsPluginWrapper、CSharpAtsPluginWrapper.PluginHostのビルドがこの�
 ├ Libraries
 ├ SamplePlugins
 ├ PluginTemplates
-| ├ PluginTemplate.Basic
-| └ PluginTemplate.DynamicTexture
-|
+│ ├ PluginTemplate.Basic
+│ └ PluginTemplate.DynamicTexture
+│
 ├ MyPlugins
-| └ AtsPlugin.AtsP
-|   ├ AtsPlugin.AtsP.csproj
-|   └ ……
-|
+│ └ AtsPlugin.AtsP
+│   ├ AtsPlugin.AtsP.csproj
+│   └ ……
+│
 └ Readme.md
 ```
 
@@ -208,8 +228,8 @@ CSharpAtsPluginWrapper、CSharpAtsPluginWrapper.PluginHostのビルドがこの�
    - Ctrl+Rを2回連打すると他のファイルで設定されている名前空間などの名前も一括で変更できます。
    - `エラー  CS0103  現在のコンテキストに 'AssemblyResolver' という名前は存在しません`などのエラーが発生した場合は、他のファイルで設定されている名前空間の名前を変更できていません。
 3. [プロジェクト(P)]→[AtsPlugin.AtsP のプロパティ(P)]からプロジェクトのプロパティを開き、アセンブリ名`YourPluginName`、既定の名前空間`YourHN.YourPluginName`もあわせて変更します。また、[アセンブリの情報(I)...]からタイトル、著作権などの設定を行います。
-4. ここまで完了したら、**Debug|x64・Debug|x86それぞれの構成にて**、[ビルド(B)]→[ソリューションのリビルド(R)]からプロジェクトを**リビルド**します（通常のビルドでは出力されたDLLの配置がスキップされることがあります）。`_DummyTrain/Ats/Ats64`・`_DummyTrain/Ats/Ats32`両フォルダ内にプラグインが配置されていることを確認してください。
-5. `_DummyTrain/Ats/Ats64`・`_DummyTrain/Ats/Ats32`両フォルダ内の`DetailModules.txt`を編集し、プラグイン**のラッパーDLL**（`AtsP.wrapper.dll`）を読み込むように設定します。間違えてターゲットDLL（`AtsP.dll`）を指定しないように注意してください。
+4. ここまで完了したら、**Debug│x64・Debug│x86それぞれの構成にて**、[ビルド(B)]→[ソリューションのリビルド(R)]からプロジェクトを**リビルド**します（通常のビルドでは出力されたDLLの配置がスキップされることがあります）。`_DummyTrain/Ats/Ats64`・`_DummyTrain/Ats/Ats32`両フォルダ内にプラグインが配置されていることを確認してください。
+5. `_DummyTrain/Ats/Ats64`・`_DummyTrain/Ats/Ats32`両フォルダ内の`DetailModulesNET.txt`を編集し、読み込みたいDLL（`AtsP.dll`）を読み込むように設定します。DetailManager.NET本体（`DetailManagerNET.dll`）やプラグインホスト（`DetailManagerNET.PluginHost.dll`）を指定する必要はありません。
 6. 何らかのシナリオにダミー車両（`_DummyTrain/Vehicle.txt`）を指定します。**このとき、ダミー車両を他のフォルダに移動しないでください。プラグインのビルド時に出力されたDLLが正しく配置されなくなります。**
 7. BVE5・6両バージョンでシナリオを読み込み、エラーが発生しなければプロジェクトのセットアップは完了です。
 
@@ -221,7 +241,7 @@ CSharpAtsPluginWrapper、CSharpAtsPluginWrapper.PluginHostのビルドがこの�
 
 1. ビルドする前に、`if DEBUG`～`endif`などで読込を一時停止させるコード（`System.Windows.Forms.MessageBox.Show(string)`など）を挿入しておきます。プラグインテンプレートには初めから記述されています。
 
-2. **Debug|x64・Debug|x86どちらかの構成にて**[ビルド(B)]→[ソリューションのリビルド(R)]からプロジェクトを**リビルド**し、ビルド構成で指定したターゲットプラットフォーム（x64 / x86）に合わせたバージョンのBVEでシナリオを読み込みます。
+2. **Debug│x64・Debug│x86どちらかの構成にて**[ビルド(B)]→[ソリューションのリビルド(R)]からプロジェクトを**リビルド**し、ビルド構成で指定したターゲットプラットフォーム（x64 / x86）に合わせたバージョンのBVEでシナリオを読み込みます。
 
 3. **1.で挿入したコードを実行中に**（`System.Windows.Forms.MessageBox.Show(string)`を使用している場合は、ダイアログの表示中に）[デバッグ(D)]→[プロセスにアタッチ(P)...]からBveTs.exeを選択し、BVEのプロセスにアタッチします。
 4. 試しに[すべて中断 (Ctrl + Alt + Break)]からプロセスを中断します。1.で挿入したコードがハイライトされていれば、デバッグが可能な状態になっています。「アプリケーションはブレーク モードになっています」などと表示される場合は正しくプロセスにアタッチできていません。
@@ -231,17 +251,18 @@ CSharpAtsPluginWrapper、CSharpAtsPluginWrapper.PluginHostのビルドがこの�
 
 動作には`_DummyTrain/Ats/Ats64`・`_DummyTrain/Ats/Ats32`両フォルダ内の以下のファイルが必要です。pdbファイルは同梱不要です。
 
-- ターゲットDLL（`AtsP.dll`）
-- ラッパーDLL（`AtsP.wrapper.dll`）
+- 読み込みたいDLL（`AtsP.dll`）
+- DetailManager.NET メインDLL（`DetailManagerNET.dll`）
+- DetailManager.NET プラグインホストDLL（`DetailManagerNET.PluginHost.dll`）
 
-**また、本ラッパーDLL含め使用しているライブラリのライセンスに従った表示・ファイル添付が必要です。これを忘れた場合はライセンス違反となります。**
+**また、使用しているライブラリのライセンスに従った表示・ファイル添付が必要です。これを忘れた場合はライセンス違反となります。**
 
-本ラッパーDLLは[The MIT License](LICENSE)のもとに提供されています。著作権を表示（Copyright (c) 2022 Automatic9045）した上で、MITライセンス文書を同梱するか、ライセンス全文が記載されているWebページへのリンクを記載する必要があります。
+なお、DetailManager.NETは[本家DetailManager](https://github.com/mikangogo/DetailManager)に則って[The Unlicense](LICENSE)のもとに提供されています。著作権やライセンスを表示する必要はありません。
 
-DXDynamicTextureなど本ラッパーDLL以外のライセンスについては、各ライブラリのWebページ等を参照してください。
+DXDynamicTextureなどDetailManager.NET本体以外のライセンスについては、各ライブラリのWebページ等を参照してください。
 
 ## ライセンス
-[The MIT License](LICENSE)
+[The Unlicense](LICENSE)
 
 ## 使用ライブラリ
 ### [DllExport](https://github.com/3F/DllExport) (MIT)
@@ -251,4 +272,4 @@ Copyright (c) 2016-2021  Denis Kuzmin <x-3F@outlook.com> github/3F
 ### [DXDynamicTexture for BVE Trainsim 5/6](https://github.com/zbx1425/DXDynamicTexture) (MIT)
 Copyright (c) 2021 zbx1425
 
-CSharpAtsPluginWrapper本体では使用していませんが、付属のテンプレート「PluginTemplate.DynamicTexture」、サンプル「SamplePlugin.DynamicTexture」に含まれます。
+DetailManager.NET本体では使用していませんが、付属のテンプレート「PluginTemplate.DynamicTexture」、サンプル「SamplePlugin.DynamicTexture」に含まれます。
