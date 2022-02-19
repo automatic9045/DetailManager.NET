@@ -35,7 +35,7 @@ namespace Automatic9045.SampleCSharpAtsPlugins.Alert
         {
         }
 
-        public void Initialize(int initialHandlePosition)
+        public void Initialize(AtsInitialHandlePosition initialHandlePosition)
         {
             MessageBox.Show("Initialize メソッドが呼び出されました。", "SamplePlugin.Alert");
             StartDateTime = DateTime.Now;
@@ -78,7 +78,7 @@ namespace Automatic9045.SampleCSharpAtsPlugins.Alert
         {
         }
 
-        public void HornBlow(int hornIndex)
+        public void HornBlow(AtsHornType hornIndex)
         {
         }
 

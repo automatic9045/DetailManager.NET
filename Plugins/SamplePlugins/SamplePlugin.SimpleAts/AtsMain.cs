@@ -39,7 +39,7 @@ namespace Automatic9045.SampleCSharpAtsPlugins.SimpleAts
             VehicleSpec = vehicleSpec;
         }
 
-        public void Initialize(int initialHandlePosition)
+        public void Initialize(AtsInitialHandlePosition initialHandlePosition)
         {
         }
 
@@ -128,7 +128,7 @@ namespace Automatic9045.SampleCSharpAtsPlugins.SimpleAts
             }
         }
 
-        public void HornBlow(int hornIndex)
+        public void HornBlow(AtsHornType hornIndex)
         {
         }
 

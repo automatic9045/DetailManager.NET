@@ -42,7 +42,7 @@ namespace Automatic9045.SampleCSharpAtsPlugins.DynamicTexture
         {
         }
 
-        public void Initialize(int initialHandlePosition)
+        public void Initialize(AtsInitialHandlePosition initialHandlePosition)
         {
         }
 
@@ -98,7 +98,7 @@ namespace Automatic9045.SampleCSharpAtsPlugins.DynamicTexture
         {
         }
 
-        public void HornBlow(int hornIndex)
+        public void HornBlow(AtsHornType hornIndex)
         {
         }
 

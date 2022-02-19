@@ -94,7 +94,7 @@ namespace Automatic9045.DetailManagerNET
         /// </summary>
         /// <param name="initialHandlePosition">Initial position of control handle.</param>
         [DllExport(CallingConvention.StdCall)]
-        public static void Initialize(int initialHandlePosition) => TargetPlugins.ForEach(plugin => plugin.Initialize(initialHandlePosition));
+        public static void Initialize(int initialHandlePosition) => TargetPlugins.ForEach(plugin => plugin.Initialize((AtsInitialHandlePosition)initialHandlePosition));
 
         /// <summary>
         /// Called every frame
@@ -170,7 +170,7 @@ namespace Automatic9045.DetailManagerNET
         /// </summary>
         /// <param name="hornIndex">Type of horn.</param>
         [DllExport(CallingConvention.StdCall)]
-        public static void HornBlow(int hornIndex) => TargetPlugins.ForEach(plugin => plugin.HornBlow(hornIndex));
+        public static void HornBlow(int hornIndex) => TargetPlugins.ForEach(plugin => plugin.HornBlow((AtsHornType)hornIndex));
 
         /// <summary>
         /// Called when the door is opened

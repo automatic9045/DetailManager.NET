@@ -37,7 +37,7 @@ namespace YourHN.YourPluginName
         {
         }
 
-        public void Initialize(int initialHandlePosition)
+        public void Initialize(AtsInitialHandlePosition initialHandlePosition)
         {
         }
 
@@ -72,7 +72,7 @@ namespace YourHN.YourPluginName
         {
         }
 
-        public void HornBlow(int hornIndex)
+        public void HornBlow(AtsHornType hornIndex)
         {
         }
 

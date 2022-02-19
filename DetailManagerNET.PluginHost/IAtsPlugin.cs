@@ -6,7 +6,7 @@ namespace Automatic9045.DetailManagerNET.PluginHost
     {
         void SetVehicleSpec(AtsVehicleSpec vehicleSpec);
 
-        void Initialize(int initialHandlePosition);
+        void Initialize(AtsInitialHandlePosition initialHandlePosition);
 
         AtsHandles Elapse(int brake, int power, int reverser, AtsVehicleState vehicleState, AtsIoArray panel, AtsIoArray sound);
 
@@ -20,7 +20,7 @@ namespace Automatic9045.DetailManagerNET.PluginHost
 
         void KeyUp(AtsKey keyIndex);
 
-        void HornBlow(int hornIndex);
+        void HornBlow(AtsHornType hornIndex);
 
         void DoorOpen();
 
