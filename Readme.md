@@ -273,3 +273,9 @@ Copyright (c) 2016-2021  Denis Kuzmin <x-3F@outlook.com> github/3F
 Copyright (c) 2021 zbx1425
 
 DetailManager.NET本体では使用していませんが、付属のテンプレート「PluginTemplate.DynamicTexture」、サンプル「SamplePlugin.DynamicTexture」に含まれます。
+
+### [Harmony](https://github.com/pardeike/Harmony) (MIT)
+
+Copyright (c) 2017 Andreas Pardeike
+
+DetailManager.NET本体では使用していませんが、付属のテンプレート「PluginTemplate.DynamicTexture」、サンプル「SamplePlugin.DynamicTexture」に含まれます。
