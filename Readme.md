@@ -257,12 +257,12 @@ DetailManagerNET、DetailManagerNET.PluginHostのビルドがこのフォルダ�
 
 **また、使用しているライブラリのライセンスに従った表示・ファイル添付が必要です。これを忘れた場合はライセンス違反となります。**
 
-なお、DetailManager.NETは[本家DetailManager](https://github.com/mikangogo/DetailManager)に則って[The Unlicense](LICENSE)のもとに提供されています。著作権やライセンスを表示する必要はありません。
+なお、DetailManager.NET独自のコードは[本家DetailManager](https://github.com/mikangogo/DetailManager)に則って[The Unlicense](LICENSE)のもとに提供されており、**DetailManager.NET独自のコードに限っては** 著作権やライセンスを表示する必要はありません。
 
-DXDynamicTextureなどDetailManager.NET本体以外のライセンスについては、各ライブラリのWebページ等を参照してください。
+DetailManager.NETやサンプルプラグインが使用しているライブラリ（DllExport、DXDynamicTextureなど）のライセンスについては、以下の「使用ライブラリ」項を参照してください。
 
 ## ライセンス
-[The Unlicense](LICENSE)
+DetailManager.NET独自のコードは[The Unlicense](LICENSE)のもとに提供されますが、以下の使用しているライブラリに関してはそれぞれのライセンスが適用されます。
 
 ## 使用ライブラリ
 ### [DllExport](https://github.com/3F/DllExport) (MIT)
