@@ -120,22 +120,19 @@
   <data name="LoadErrorOccured" xml:space="preserve">
     <value>ATS プラグイン '{0}' の読込中にエラーが発生しました</value>
   </data>
+  <data name="PluginListNotFound" xml:space="preserve">
+    <value>プラグインリスト '{0}' が見つかりません。</value>
+  </data>
   <data name="PluginTypeNoParamLessConstructor" xml:space="preserve">
     <value>型 '{0}' でパラメータをもたないコンストラクタが定義されていません。ラッパー DLL からインスタンスを生成するために、ATS プラグインとして使用する型にはパラメータをもたないコンストラクタを定義する必要があります。</value>
   </data>
   <data name="PluginTypeNotFound" xml:space="preserve">
     <value>ターゲット DLL '{0}' から ATS プラグインとして使用できる型が見つかりませんでした。ATS プラグインとして使用するには {1} を実装したパブリックなクラスである必要があります。</value>
   </data>
-  <data name="PluginTypeTooMeny" xml:space="preserve">
-    <value>ターゲット DLL '{0}' で定義された ATS プラグインとして使用できる型が多すぎます。1 つのターゲット DLL 当たり 1 つのみ ATS プラグインとして使用する型を定義可能です。</value>
-  </data>
   <data name="TargetDllBadImageFormat" xml:space="preserve">
     <value>ターゲット DLL '{0}' を読み込めません。ターゲット フレームワーク (3.5、4.8 など) またはターゲット プラットフォーム (x86 / x64) が間違っているか、.NET Framework で開発された DLL ではない可能性があります。</value>
   </data>
   <data name="TargetDllNotFound" xml:space="preserve">
     <value>ターゲット DLL '{0}' が見つかりません。</value>
-  </data>
-  <data name="WrapperDllFileNameIllegal" xml:space="preserve">
-    <value>ラッパー DLL のファイル名 '{0}' は不正です。ラッパー DLL のファイル名は "(ターゲット DLL のファイル名).wrapper.dll" とする必要があります (例: ターゲット DLL が "ats-p.dll" の場合は "ats-p.wrapper.dll")。</value>
   </data>
 </root>

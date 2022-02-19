@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Automatic9045.DetailManagerNET</RootNamespace>
-    <AssemblyName>%28ATSプラグイン名%29.wrapper</AssemblyName>
+    <AssemblyName>DetailManagerNET</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -60,6 +60,7 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PluginListLoader.cs" />
     <Compile Include="PluginLoader.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -85,13 +86,13 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DetailManagerNET.PluginHost\DetailManagerNET.PluginHost.csproj">
-      <Project>{c715bd88-f9a3-4204-b82e-15ba4c285fb8}</Project>
-      <Name>CSharpAtsPluginWrapper.PluginHost</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <ProjectReference Include="..\DetailManagerNET.PluginHost\DetailManagerNET.PluginHost.csproj">
+      <Project>{c715bd88-f9a3-4204-b82e-15ba4c285fb8}</Project>
+      <Name>DetailManagerNET.PluginHost</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

@@ -1,0 +1,3 @@
+SamplePlugin.Alert.dll
+SamplePlugin.SimpleAts.dll
+SamplePlugin.DynamicTexture.dll

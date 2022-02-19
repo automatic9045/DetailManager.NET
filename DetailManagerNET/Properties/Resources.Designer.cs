@@ -70,6 +70,15 @@ namespace Automatic9045.DetailManagerNET.Properties {
         }
         
         /// <summary>
+        ///   The plugin list &apos;{0}&apos; does not exist. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string PluginListNotFound {
+            get {
+                return ResourceManager.GetString("PluginListNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   No parameterless constructor defined in &apos;{0}&apos;. The types for ATS plugin require parameterless constructor to create an instance from the wrapper. に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string PluginTypeNoParamLessConstructor {
@@ -88,15 +97,6 @@ namespace Automatic9045.DetailManagerNET.Properties {
         }
         
         /// <summary>
-        ///   Too meny types available as ATS plugin found in the target DLL &apos;{0}&apos;, only one type for ATS plugin can be defined in one target DLL. に類似しているローカライズされた文字列を検索します。
-        /// </summary>
-        internal static string PluginTypeTooMeny {
-            get {
-                return ResourceManager.GetString("PluginTypeTooMeny", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Unable to load the target DLL &apos;{0}&apos;. The target framework (3.5, 4.8, etc.) or target platform (x86 / x64) may be wrong, or it may not be developed with .NET Framework. に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string TargetDllBadImageFormat {
@@ -111,15 +111,6 @@ namespace Automatic9045.DetailManagerNET.Properties {
         internal static string TargetDllNotFound {
             get {
                 return ResourceManager.GetString("TargetDllNotFound", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   The file name of the wrapper DLL &apos;{0}&apos; is illegal; the file name must be like &quot;(TargetDllName).wrapper.dll&quot;, e.g. the wrapper for &quot;ats-p.dll&quot; must be &quot;ats-p.wrapper.dll&quot;. に類似しているローカライズされた文字列を検索します。
-        /// </summary>
-        internal static string WrapperDllFileNameIllegal {
-            get {
-                return ResourceManager.GetString("WrapperDllFileNameIllegal", resourceCulture);
             }
         }
     }

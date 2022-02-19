@@ -120,22 +120,19 @@
   <data name="LoadErrorOccured" xml:space="preserve">
     <value>An error occured while loading ATS plugin '{0}'</value>
   </data>
+  <data name="PluginListNotFound" xml:space="preserve">
+    <value>The plugin list '{0}' does not exist.</value>
+  </data>
   <data name="PluginTypeNoParamLessConstructor" xml:space="preserve">
     <value>No parameterless constructor defined in '{0}'. The types for ATS plugin require parameterless constructor to create an instance from the wrapper.</value>
   </data>
   <data name="PluginTypeNotFound" xml:space="preserve">
     <value>Cannot find a type available as ATS plugin in the target DLL '{0}', types for ATS plugin must be a public class implementing {1}.</value>
   </data>
-  <data name="PluginTypeTooMeny" xml:space="preserve">
-    <value>Too meny types available as ATS plugin found in the target DLL '{0}', only one type for ATS plugin can be defined in one target DLL.</value>
-  </data>
   <data name="TargetDllBadImageFormat" xml:space="preserve">
     <value>Unable to load the target DLL '{0}'. The target framework (3.5, 4.8, etc.) or target platform (x86 / x64) may be wrong, or it may not be developed with .NET Framework.</value>
   </data>
   <data name="TargetDllNotFound" xml:space="preserve">
     <value>The target DLL '{0}' does not exist.</value>
-  </data>
-  <data name="WrapperDllFileNameIllegal" xml:space="preserve">
-    <value>The file name of the wrapper DLL '{0}' is illegal; the file name must be like "(TargetDllName).wrapper.dll", e.g. the wrapper for "ats-p.dll" must be "ats-p.wrapper.dll".</value>
   </data>
 </root>

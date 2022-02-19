@@ -12,61 +12,40 @@ namespace Automatic9045.DetailManagerNET
 {
     internal static class PluginLoader
     {
-        public static IAtsPlugin Load()
+        public static IEnumerable<IAtsPlugin> LoadFrom(string assemblyPath)
         {
-            string targetAssemblyPath = null;
-            Assembly targetAssembly;
+            if (!File.Exists(assemblyPath))
+            {
+                throw new FileNotFoundException(string.Format(Resources.TargetDllNotFound, assemblyPath), assemblyPath);
+            }
+
+            Assembly assembly;
             try
             {
-                string executingAssemblyPath = Assembly.GetExecutingAssembly().Location;
-                string wrapperDllString = ".wrapper.dll";
-                if (!executingAssemblyPath.ToLower().EndsWith(wrapperDllString))
-                {
-                    throw new FileLoadException(string.Format(Resources.WrapperDllFileNameIllegal, Path.GetFileName(executingAssemblyPath)));
-                }
-
-                targetAssemblyPath = executingAssemblyPath.Substring(0, executingAssemblyPath.Length - wrapperDllString.Length) + ".dll";
-                if (!File.Exists(targetAssemblyPath))
-                {
-                    throw new FileNotFoundException(string.Format(Resources.TargetDllNotFound, targetAssemblyPath));
-                }
-
-                try
-                {
-                    targetAssembly = Assembly.LoadFrom(targetAssemblyPath);
-                }
-                catch (BadImageFormatException ex)
-                {
-                    throw new Exception(string.Format(Resources.TargetDllBadImageFormat, targetAssemblyPath), ex);
-                }
-
-                Type[] types = targetAssembly.GetTypes();
-                IEnumerable<Type> pluginTypes = types.Where(t => t.IsPublic && !t.IsAbstract && t.IsClass && t.GetInterfaces().Contains(typeof(IAtsPlugin)));
-                if (!pluginTypes.Any())
-                {
-                    throw new Exception(string.Format(Resources.PluginTypeNotFound, targetAssemblyPath, nameof(IAtsPlugin)));
-                }
-                else if (pluginTypes.Count() > 1)
-                {
-                    throw new Exception(string.Format(Resources.PluginTypeTooMeny, targetAssemblyPath));
-                }
-
-                Type pluginType = pluginTypes.First();
-
-                if (pluginType.GetConstructor(Type.EmptyTypes) is null)
-                {
-                    Type type = pluginTypes.First(t => t.GetConstructor(Type.EmptyTypes) is null);
-                    throw new TypeLoadException(string.Format(Resources.PluginTypeNoParamLessConstructor, type.FullName));
-                }
-
-                IAtsPlugin targetPlugin = (IAtsPlugin)Activator.CreateInstance(pluginType);
-                return targetPlugin;
+                assembly = Assembly.LoadFrom(assemblyPath);
             }
-            catch (Exception ex)
+            catch (BadImageFormatException ex)
             {
-                MessageBox.Show(ex.ToString(), string.Format(Resources.LoadErrorOccured, targetAssemblyPath is null ? "" : Path.GetFileName(targetAssemblyPath)), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                throw;
+                throw new Exception(string.Format(Resources.TargetDllBadImageFormat, assemblyPath), ex);
             }
+
+            Type[] types = assembly.GetTypes();
+            IEnumerable<Type> pluginTypes = types.Where(t => t.IsPublic && !t.IsAbstract && t.IsClass && t.GetInterfaces().Contains(typeof(IAtsPlugin)));
+            if (!pluginTypes.Any())
+            {
+                throw new Exception(string.Format(Resources.PluginTypeNotFound, assemblyPath, nameof(IAtsPlugin)));
+            }
+
+            Type pluginType = pluginTypes.First();
+
+            if (pluginType.GetConstructor(Type.EmptyTypes) is null)
+            {
+                Type type = pluginTypes.First(t => t.GetConstructor(Type.EmptyTypes) is null);
+                throw new TypeLoadException(string.Format(Resources.PluginTypeNoParamLessConstructor, type.FullName));
+            }
+
+            IAtsPlugin targetPlugin = (IAtsPlugin)Activator.CreateInstance(pluginType);
+            yield return targetPlugin;
         }
     }
 }
