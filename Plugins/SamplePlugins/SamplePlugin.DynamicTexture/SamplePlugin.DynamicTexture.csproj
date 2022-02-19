@@ -54,10 +54,8 @@
     <TargetFrameworkVersion Condition="'$(Platform)' == 'x86'">v3.5</TargetFrameworkVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CSharpPluginHost, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Libraries\CSharpPluginHost.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="DetailManagerNET.PluginHost">
+      <HintPath>..\..\Libraries\DetailManagerNET.PluginHost.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -83,15 +81,15 @@
     <PostBuildEvent>if "$(PlatformName)"=="x64" (
   copy /y "$(TargetPath)" "$(SolutionDir)Plugins\_DummyTrain\Ats\Ats64\"
   copy /y "$(TargetDir)$(TargetName).pdb" "$(SolutionDir)Plugins\_DummyTrain\Ats\Ats64\"
-  copy /y "$(SolutionDir)Plugins\Libraries\x64\DetailManagerNET.dll" "$(SolutionDir)Plugins\_DummyTrain\Ats\Ats64\DetailManagerNET.dll"
-  copy /y "$(SolutionDir)Plugins\Libraries\CSharpPluginHost.dll" "$(SolutionDir)Plugins\_DummyTrain\Ats\Ats64\CSharpPluginHost.dll"
+  copy /y "$(SolutionDir)Plugins\Libraries\x64\DetailManagerNET.dll" "$(SolutionDir)Plugins\_DummyTrain\Ats\Ats64\"
+  copy /y "$(SolutionDir)Plugins\Libraries\DetailManagerNET.PluginHost.dll" "$(SolutionDir)Plugins\_DummyTrain\Ats\Ats64\"
 )
 
 if "$(PlatformName)"=="x86" (
   copy /y "$(TargetPath)" "$(SolutionDir)Plugins\_DummyTrain\Ats\Ats32\"
   copy /y "$(TargetDir)$(TargetName).pdb" "$(SolutionDir)Plugins\_DummyTrain\Ats\Ats32\"
-  copy /y "$(SolutionDir)Plugins\Libraries\x86\DetailManagerNET.dll" "$(SolutionDir)Plugins\_DummyTrain\Ats\Ats32\DetailManagerNET.dll"
-  copy /y "$(SolutionDir)Plugins\Libraries\CSharpPluginHost.dll" "$(SolutionDir)Plugins\_DummyTrain\Ats\Ats32\CSharpPluginHost.dll"
+  copy /y "$(SolutionDir)Plugins\Libraries\x86\DetailManagerNET.dll" "$(SolutionDir)Plugins\_DummyTrain\Ats\Ats32\"
+  copy /y "$(SolutionDir)Plugins\Libraries\DetailManagerNET.PluginHost.dll" "$(SolutionDir)Plugins\_DummyTrain\Ats\Ats32\"
 )</PostBuildEvent>
   </PropertyGroup>
 </Project>

@@ -28,9 +28,9 @@ namespace Automatic9045.DetailManagerNET
 #endif
             AppDomain.CurrentDomain.AssemblyResolve += (sender, e) =>
             {
-                if (e.Name.Contains("CSharpPluginHost"))
+                if (e.Name.Contains("DetailManagerNET.PluginHost"))
                 {
-                    return Assembly.LoadFile(Path.Combine(BaseDirectory, "CSharpPluginHost.dll"));
+                    return Assembly.LoadFile(Path.Combine(BaseDirectory, "DetailManagerNET.PluginHost.dll"));
                 }
                 else
                 {
