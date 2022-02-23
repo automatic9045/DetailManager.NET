@@ -2,7 +2,7 @@
 using System.IO;
 using System.Reflection;
 
-namespace YourHN.YourPluginName
+namespace $namespace$
 {
     internal class AssemblyResolver
     {

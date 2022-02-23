@@ -6,10 +6,7 @@ using System.Windows.Forms;
 
 using Automatic9045.DetailManagerNET.PluginHost;
 
-// ↓「YourHN」をあなたのハンドルネーム、「YourPluginName」をプラグインの名前に変更します。
-// 　Visual Studioの場合はCtrl+R 2回連打から一括で改名できます。
-// 　プロジェクトのプロパティ内の名称設定もあわせて変更してください。
-namespace YourHN.YourPluginName
+namespace $namespace$
 {
     public class AtsMain : IAtsPlugin
     {

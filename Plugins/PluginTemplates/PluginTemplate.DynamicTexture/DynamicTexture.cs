@@ -2,7 +2,7 @@
 
 using Zbx1425.DXDynamicTexture;
 
-namespace YourHN.YourPluginName
+namespace $namespace$
 {
     public class DynamicTexture : IDisposable
     {

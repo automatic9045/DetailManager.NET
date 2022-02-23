@@ -1,6 +1,7 @@
 .vs
 bin
 obj
+*.snk
 
 Plugins/Libraries/*.dll
 Plugins/Libraries/x64/*.dll

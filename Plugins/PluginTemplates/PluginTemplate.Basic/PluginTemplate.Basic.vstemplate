@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VSTemplate Version="3.0.0" Type="Project" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" xmlns:sdk="http://schemas.microsoft.com/developer/vstemplate-sdkextension/2010">
+	<TemplateData>
+		<Name>BVE DetailManager.NET ATS Plugin</Name>
+		<Description>A BVE ATS plugin template executable on DetailManager.NET.</Description>
+		<Icon>PluginTemplate.Basic.ico</Icon>
+		<ProjectType>CSharp</ProjectType>
+		<LanguageTag>csharp</LanguageTag>
+		<PlatformTag>Windows</PlatformTag>
+		<ProjectTypeTag>Library</ProjectTypeTag>
+		<ProjectTypeTag>BVE Trainsim 5</ProjectTypeTag>
+		<ProjectTypeTag>BVE Trainsim 6</ProjectTypeTag>
+		<RequiredFrameworkVersion>3.5</RequiredFrameworkVersion>
+		<SortOrder>1000</SortOrder>
+		<TemplateID>19f8fd16-770b-4da7-a3da-90d4f77e9344</TemplateID>
+		<CreateNewFolder>true</CreateNewFolder>
+		<DefaultName>AtsPlugin</DefaultName>
+		<ProvideDefaultName>true</ProvideDefaultName>
+	</TemplateData>
+	<TemplateContent>
+		<Project File="ProjectTemplate.csproj" ReplaceParameters="true">
+			<ProjectItem>DetailManagerNET.x64.dll</ProjectItem>
+			<ProjectItem>DetailManagerNET.x86.dll</ProjectItem>
+			<ProjectItem>DetailManagerNET.PluginHost.dll</ProjectItem>
+			<ProjectItem ReplaceParameters="true" TargetFileName="Properties\AssemblyInfo.cs">AssemblyInfo.cs</ProjectItem>
+			<ProjectItem ReplaceParameters="true" OpenInEditor="true">AtsMain.cs</ProjectItem>
+		</Project>
+	</TemplateContent>
+	<WizardExtension>
+		<Assembly>DetailManagerNET.PluginTemplatePack, Version=1.0.20220.1, Culture=Neutral, PublicKeyToken=aa349b8ff5518ce0</Assembly>
+		<FullClassName>Automatic9045.DetailManagerNET.PluginTemplates.Wizard</FullClassName>
+	</WizardExtension>
+</VSTemplate>
