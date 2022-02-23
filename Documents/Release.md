@@ -32,9 +32,7 @@ DetailManager.NET本体のコード、構成については[リポジトリ詳�
 
 - **ダミー車両のみを別フォルダに移動しないでください。サンプルプラグインのビルド時、出力されたDLLを`Plugins/_DummyTrain/Ats`へ自動配置しています。** 詳細は各サンプルプラグインプロジェクトの[プロパティ]→[ビルド イベント]をご確認ください。
 
-### Plugins/Libraries
-
-#### リリースの場合
+### Libraries
 
 ライブラリがこのフォルダ以下に格納されています。
 
@@ -48,37 +46,37 @@ DetailManager.NET本体のコード、構成については[リポジトリ詳�
 - **このフォルダやフォルダ内のコンテンツを削除・移動しないでください。サンプルプラグインのビルド時、このフォルダ内のDLLを自動でコピーしています。** 詳細は各サンプルプラグインプロジェクトの[プロパティ]→[ビルド イベント]をご確認ください。
 - サンプルプラグインはこれらのDLLを自動でコピー・改名するため、特別な作業は必要ありません。
 
-### Plugins/PluginTemplates
+### PluginTemplates
 
-プラグインのテンプレートがこのフォルダ内に格納されています。
+プラグインのテンプレートのVSIXインストーラーがこのフォルダ内に格納されています。  
+VSIXインストーラーを実行すると以下のテンプレートがインストールされ、Visual Studioの「新しいプロジェクトの作成」から選択できるようになります。詳しいインストールの方法は「使い方」項の1～2をご覧ください。
 
-以下のテンプレートをそのままビルドすると、「何もしないATSプラグイン」として動作します。  
-また、各プロジェクトはビルド後に`Plugins/_DummyTrain/Ats`へ自動配置するように設定されています。詳細は各テンプレートの[プロパティ]→[ビルド イベント]をご確認ください。
+テンプレートをそのままビルドすると、「何もしないATSプラグイン」として動作します。
 
-#### Plugins/PluginTemplates/Basic
+#### BVE DetailManager.NET ATS Plugin
 
 最もベーシックなテンプレートです。必要最低限なコードのみが記述されています。
 
-#### Plugins/PluginTemplates/DynamicTexture
+#### BVE DetailManager.NET ATS Plugin with DynamicTexture
 
-[DXDynamicTexture](https://github.com/zbx1425/DXDynamicTexture)を使用するプラグインのテンプレートです。Basicと同一のコードの他、DXDynamicTextureの動作に必要なコード、テクスチャを編集しやすくするためのクラス（初期クラス名：`YourHN.YourPluginName.DynamicTexture`）が定義されています。また、ビルド時のターゲットプラットフォームの設定によってターゲットフレームワークが自動で変更されるようになっています。
+[DXDynamicTexture](https://github.com/zbx1425/DXDynamicTexture)を使用するプラグインのテンプレートです。Basicと同一のコードの他、DXDynamicTextureの動作に必要なコード、テクスチャを編集しやすくするためのクラス（初期クラス名：`(ウィザードで設定した既定の名前空間).DynamicTexture`）が定義されています。また、ビルド時のターゲットプラットフォームの設定によってターゲットフレームワークが自動で変更されるようになっています。
 
-### Plugins/SamplePlugins
+### SamplePlugins
 
 プラグインのサンプルがこのフォルダ内に格納されています。
 
 以下のサンプルは初めからダミー車両で参照するように設定されており、動作を確認することができます。  
-また、各プロジェクトはビルド後に`Plugins/_DummyTrain/Ats`へ自動配置するように設定されています。詳細は各サンプルの[プロパティ]→[ビルド イベント]をご確認ください。
+また、各プロジェクトはビルド後に`_DummyTrain/Ats`へ自動配置するように設定されています。詳細は各サンプルの[プロパティ]→[ビルド イベント]をご確認ください。
 
-#### Plugins/SamplePlugins/Alert
+#### SamplePlugins/Alert
 
 シナリオを開始した時（Initializeメソッド呼出時）、シナリオ開始から10秒経過した時にダイアログを表示します。
 
-#### Plugins/SamplePlugins/DynamicTexture
+#### SamplePlugins/DynamicTexture
 
 [DXDynamicTexture](https://github.com/zbx1425/DXDynamicTexture)のサンプルです。`Plugins/_DummyTrain/Panel/Raindow.tex.png`を置き換え、ランダムな色の背景に「SamplePlugin.DynamicTexture」の白い文字を描画します。
 
-#### Plugins/SamplePlugins/SimpleAts
+#### SamplePlugins/SimpleAts
 
 100km/hを超過すると95km/hまで常用最大ブレーキで減速します。作動中はATS0の音を鳴らし、ATS255のパネルを表示します。
 
