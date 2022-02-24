@@ -1,6 +1,9 @@
 # リリース詳説
 DetailManager.NET本体のコード、構成については[リポジトリ詳説](Repository.md)をご覧ください。
 
+## ダウンロード
+[最新のリリース](https://github.com/automatic9045/DetailManager.NET/releases/latest)
+
 ## フォルダ構成
 
 ```
