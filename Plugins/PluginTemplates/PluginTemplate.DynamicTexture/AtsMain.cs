@@ -15,6 +15,8 @@ using Automatic9045.DetailManagerNET.PluginHost;
  * 3. フォルダ内の4つのDLL（Zbx1425.DXDynamicTexture-net35.dll、Zbx1425.DXDynamicTexture-net48.dll、Harmony-net35.dll、Harmony-net48.dll）について、
  *    右クリック→[プロパティ]からセキュリティロックを解除します（「ブロックの解除」または「許可する」チェックボックスにチェック→「OK」または「適用」）。
  * 4. 4つのDLL全てをこのファイル（AtsMain.cs）と同じフォルダ内に配置します。
+ * 5. [プロジェクト(P)]→[既存の項目の追加(G)...]から配置したZbx1425.DXDynamicTexture-net35.dllを選択します。
+ * 6. エラーが表示されなくなったらセットアップは成功です。
  * 
  * 
  * Before you begin work:
@@ -24,6 +26,8 @@ using Automatic9045.DetailManagerNET.PluginHost;
  * 3. For the four DLLs in the folder (Zbx1425.DXDynamicTexture-net35.dll, Zbx1425.DXDynamicTexture-net48.dll, Harmony-net35.dll, Harmony-net48.dll),
  *    right-click -> select [Properties] -> check the "Unblock" checkbox -> "OK" or "Apply" to remove the security lock.
  * 4. Place all four DLLs in the same folder as this file (AtsMain.cs).
+ * 5. [Project] -> [Add Existing Item...] -> select Zbx1425.DXDynamicTexture-net35.dll that you placed.
+ * 6. Now the errors disappear and the setup is complete.
  */
 namespace $namespace$
 {
