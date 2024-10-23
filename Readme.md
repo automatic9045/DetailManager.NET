@@ -1,3 +1,5 @@
+**⚠️古いプラグインのため、Public archive となりました。[AtsEX](https://github.com/automatic9045/AtsEX) をご利用ください。**
+
 # DetailManager.NET
 【BVE5・6】C#などの.NET系言語で開発したATSプラグインをDllExport無しでBVEから読み込めるようにするプラグインです。
 
